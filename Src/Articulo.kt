@@ -1,0 +1,16 @@
+open class Articulo(var nombre: String, var precio: Double) {
+    private val id: Int = generarId()
+
+    companion object {
+        private var totalArticulos = 0
+        private fun generarId() = ++totalArticulos
+    }
+
+    open fun promocionNavidad(porcentaje: Double) {
+        precio -= precio * (porcentaje / 100)
+    }
+
+    override fun toString(): String {
+        return "$nombre - ${"%.2f".format(precio)}€ (ID: $id)"
+    }
+}
